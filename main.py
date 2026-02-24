@@ -15,9 +15,9 @@ load_dotenv()
 # تنظیمات از محیط (Secrets)
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
-SESSION_STR = os.getenv("SESSION_STR") # رشته StringSession اکانت شخصی
-BOT_TOKEN = os.getenv("BOT_TOKEN")     # توکن ربات شما
-MY_CHANNEL = '@V2ray4Free1'            # کانال مقصد
+SESSION_STR = os.getenv("SESSION_STR")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+MY_CHANNEL = '@V2ray4Free1'
 
 TELEGRAM_CHANNELS = [
     '@arisping', '@PrivateVPNs', '@AzadLinkIran', 
@@ -28,7 +28,6 @@ CONFIG_PATTERN = re.compile(r'(?:vmess|vless|ss|shadowsocks|trojan|hysteria|hyst
 
 async def fetch_configs():
     all_configs = set()
-    # استفاده از StringSession برای لاگین بدون فایل
     client = TelegramClient(StringSession(SESSION_STR), API_ID, API_HASH)
     
     try:
@@ -49,7 +48,7 @@ async def fetch_configs():
                     if msg.message:
                         found = CONFIG_PATTERN.findall(msg.message)
                         for cfg in found:
-                            # تمیزکاری و افزودن تگ
+                            # تمیزکاری و افزودن تگ (اینجا شخصی‌سازی انجام می‌شود)
                             clean_cfg = re.split(r'\s*#', cfg)[0].strip()
                             all_configs.add(f"{clean_cfg}#@V2ray4Free1")
             except Exception as e:
@@ -59,34 +58,28 @@ async def fetch_configs():
     return list(all_configs)
 
 def save_and_encode(configs):
-    if not configs: return False
+    # تغییر: همیشه فایل‌ها رو می‌سازیم تا گیت‌هاب ارور نده
+    content = "\n".join(configs) if configs else "no configs found"
     
-    # ذخیره فایل متنی معمولی
     with open("telegram_configs.txt", "w", encoding="utf-8") as f:
-        f.write("\n".join(configs))
+        f.write(content)
     
-    # ساخت فایل Base64 برای ساب‌سکریپشن
-    full_content = "\n".join(configs)
-    encoded = base64.b64encode(full_content.encode("utf-8")).decode("utf-8")
+    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
     with open("telegram_configs_base64.txt", "w", encoding="utf-8") as f:
         f.write(encoded)
     return True
 
 async def send_to_channel(configs):
     if not configs: return
-    # لاگین به عنوان ربات برای ارسال پیام
     bot = TelegramClient('bot_session', API_ID, API_HASH)
     try:
         await bot.start(bot_token=BOT_TOKEN)
-        
-        # پیام اطلاع‌رسانی
         now_j = jdatetime.datetime.now()
         text = (f"⭕️ به‌روزرسانی کانفیگ‌ها\n"
                 f"📅 {now_j.strftime('%Y/%m/%d')} - {now_j.strftime('%H:%M')}\n"
                 f"✅ تعداد: {len(configs)} کانفیگ جدید")
         await bot.send_message(MY_CHANNEL, text)
         
-        # ارسال کانفیگ‌ها در دسته‌های ۱۵ تایی
         for i in range(0, len(configs), 15):
             chunk = configs[i:i+15]
             msg = "```\n" + "\n".join(chunk) + "\n```"
@@ -97,5 +90,6 @@ async def send_to_channel(configs):
 
 if __name__ == "__main__":
     configs = asyncio.run(fetch_configs())
-    if save_and_encode(configs):
+    save_and_encode(configs) # تغییر: همیشه اجرا می‌شود
+    if configs:
         asyncio.run(send_to_channel(configs))
