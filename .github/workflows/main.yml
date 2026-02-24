@@ -1,22 +1,24 @@
-name: Run V2ray Config Collector
+name: Collect & Update Configs
 
 on:
   schedule:
-    - cron: '0 */8 * * *'   # هر ۶ ساعت
-  workflow_dispatch:        # امکان اجرای دستی
+    - cron: '0 */8 * * *'          # هر ۶ ساعت
+  workflow_dispatch:               # امکان اجرای دستی
 
 jobs:
-  run-script:
+  collect:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}   # برای push نیاز است
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'   # یا 3.10 یا 3.12
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -28,4 +30,13 @@ jobs:
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
-        run: python main.py   # نام فایل اسکریپتت رو اگر فرق داره تغییر بده
+        run: python main.py               # نام فایل اسکریپت خودت
+
+      - name: Commit and push base64 file if changed
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          
+          git add telegram_configs_base64.txt || true
+          git commit -m "به‌روزرسانی base64 subscription - $(date '+%Y-%m-%d %H:%M')" || echo "هیچ تغییری نبود"
+          git push || echo "push انجام نشد"
