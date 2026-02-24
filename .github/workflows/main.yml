@@ -2,8 +2,10 @@ name: Collect V2Ray Configs
 
 on:
   schedule:
-    - cron: '0 */8 * * *'
-  workflow_dispatch:
+    - cron: '30 6 * * *'    # 10:30 صبح ایران = 06:30 UTC
+    - cron: '30 12 * * *'   # 16:30 ایران = 12:30 UTC
+    - cron: '30 18 * * *'   # 22:30 ایران = 18:30 UTC
+  workflow_dispatch:        # برای تست دستی همچنان فعال باشد
 
 jobs:
   collect:
