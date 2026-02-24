@@ -32,25 +32,24 @@ async def fetch_configs():
     
     try:
         await client.start()
+        # تعریف بازه زمانی (امروز)
         now = datetime.now(timezone.utc)
         time_threshold = now.replace(hour=0, minute=0, second=0, microsecond=0)
 
         for channel in TELEGRAM_CHANNELS:
             try:
-                entity = await client.get_entity(channel)
-                messages = await client(GetHistoryRequest(
-                    peer=entity, limit=100, offset_id=0, offset_date=None,
-                    add_offset=0, max_id=0, min_id=0, hash=0
-                ))
-
-                for msg in messages.messages:
-                    if msg.date < time_threshold: break
+                # استفاده از iter_messages که در محیط سرور بسیار پایدارتر است
+                async for msg in client.iter_messages(channel, limit=50):
+                    if msg.date < time_threshold:
+                        break # چون پیام‌ها به ترتیب زمانی هستند، بقیه قدیمی‌ترند
+                    
                     if msg.message:
                         found = CONFIG_PATTERN.findall(msg.message)
                         for cfg in found:
-                            # تمیزکاری و افزودن تگ (اینجا شخصی‌سازی انجام می‌شود)
                             clean_cfg = re.split(r'\s*#', cfg)[0].strip()
                             all_configs.add(f"{clean_cfg}#@V2ray4Free1")
+                
+                print(f"Successfully checked {channel}")
             except Exception as e:
                 print(f"Error in {channel}: {e}")
     finally:
