@@ -178,32 +178,48 @@ def save_to_files(all_configs: list) -> list:
     txt_filename = "telegram_configs.txt"
     base64_filename = "telegram_configs_base64.txt"
 
-    today_str = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now().date()
 
-    # همیشه از نو شروع می‌کنیم (روز جدید = فایل جدید)
-    # اگر بخواهیم دقیق‌تر باشیم می‌توانیم تاریخ فایل را چک کنیم، ولی ساده‌تر این است که همیشه overwrite کنیم
-    # چون در Actions هر job جدا است و ما فقط کانفیگ‌های امروز را می‌خواهیم
+    previous_set = set()
+    is_new_day = True  # پیش‌فرض: روز جدید فرض می‌کنیم
 
-    new_configs = cleaned_all  # در این حالت همه پیدا شده‌ها «جدید» هستند چون فایل روز قبل را نادیده می‌گیریم
+    if os.path.exists(txt_filename):
+        try:
+            mtime = datetime.fromtimestamp(os.path.getmtime(txt_filename))
+            file_date = mtime.date()
+
+            if file_date == today:
+                is_new_day = False
+                with open(txt_filename, "r", encoding="utf-8") as f:
+                    lines = f.read().splitlines()
+                    previous_set = set(line.strip() for line in lines if line.strip() and not line.startswith('#'))
+            else:
+                print(f"فایل مربوط به روز قبل ({file_date}) است → بازنویسی برای روز جدید")
+        except Exception as e:
+            print(f"خطا در بررسی تاریخ فایل: {e}")
+
+    # کانفیگ‌های واقعاً جدید نسبت به محتوای فعلی فایل
+    new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
 
     if not new_configs:
-        print("هیچ کانفیگ جدیدی برای امروز پیدا نشد.")
-        # فایل‌ها را خالی کنیم یا ایجاد کنیم
-        open(txt_filename, "w", encoding="utf-8").close()
-        open(base64_filename, "w", encoding="utf-8").close()
+        print("هیچ کانفیگ جدیدی پیدا نشد.")
         return []
 
+    # اگر روز جدید باشد → از اول بنویس (overwrite)
+    # اگر همان روز باشد → اضافه کن (append)
+    mode = "w" if is_new_day else "a"
+
     try:
-        # همیشه overwrite (w) → محتوای روز قبل پاک می‌شود
-        with open(txt_filename, "w", encoding="utf-8") as f:
-            f.write(f"# Generated for {today_str}\n")  # اختیاری: برای خوانایی
+        with open(txt_filename, mode, encoding="utf-8") as f:
+            if mode == "w":
+                f.write(f"# Generated for {today.strftime('%Y-%m-%d')}\n")
             for cfg in new_configs:
                 f.write(cfg + "\n")
-        print(f"{len(new_configs)} کانفیگ امروز در فایل ذخیره شد (overwrite برای روز جدید)")
+        print(f"{len(new_configs)} کانفیگ {'جدید اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد'}")
     except Exception as e:
         print(f"خطا در نوشتن فایل txt: {e}")
 
-    # ساخت base64 از محتوای امروز
+    # همیشه base64 از محتوای نهایی txt ساخته شود
     try:
         with open(txt_filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
@@ -211,9 +227,7 @@ def save_to_files(all_configs: list) -> list:
             encoded = base64.b64encode(full_content.encode("utf-8")).decode("utf-8")
             with open(base64_filename, "w", encoding="utf-8") as f:
                 f.write(encoded)
-            print("فایل base64 برای امروز بروز شد.")
-        else:
-            open(base64_filename, "w", encoding="utf-8").close()
+            print("فایل base64 بروز شد.")
     except Exception as e:
         print(f"خطا در ساخت base64: {e}")
 
