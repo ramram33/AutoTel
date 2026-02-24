@@ -1,0 +1,38 @@
+name: Auto Update Configs
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # هر ۶ ساعت
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install telethon python-dotenv jdatetime
+
+      - name: Run Script
+        env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          SESSION_STR: ${{ secrets.SESSION_STR }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: python main.py
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add telegram_configs.txt telegram_configs_base64.txt
+          git commit -m "Update configs [skip ci]" || exit 0
+          git push
