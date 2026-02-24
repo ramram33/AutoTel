@@ -2,6 +2,7 @@ import asyncio
 import re
 import os
 import base64
+from zoneinfo import ZoneInfo
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 from telethon.tl.functions.messages import GetHistoryRequest
@@ -234,7 +235,10 @@ async def post_to_channel(new_configs: list):
         month_names_fa = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
                           "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
         month_name = month_names_fa[now_jalali.month - 1]
-        time_str = datetime.now().strftime("%H:%M")
+       # زمان به وقت ایران
+        tehran_tz = ZoneInfo("Asia/Tehran")
+        now_tehran = datetime.now(tehran_tz)
+        time_str = now_tehran.strftime("%H:%M")
 
         first_message = (
             f"⭕️ به‌روزرسانی کانفیگ‌ها\n"
