@@ -1,9 +1,9 @@
-name: Collect & Update Configs
+name: Collect V2Ray Configs
 
 on:
   schedule:
-    - cron: '0 */8 * * *'          # هر ۶ ساعت
-  workflow_dispatch:               # امکان اجرای دستی
+    - cron: '0 */8 * * *'
+  workflow_dispatch:
 
 jobs:
   collect:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}   # برای push نیاز است
+          token: ${{ secrets.GH_TOKEN }}   # مهم برای push
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,18 +25,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install telethon jdatetime python-dotenv
 
-      - name: Run collector script
+      - name: Run script
         env:
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
-        run: python main.py               # نام فایل اسکریپت خودت
+        run: python main.py
 
-      - name: Commit and push base64 file if changed
+      - name: Commit updated config files
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
           
-          git add telegram_configs_base64.txt || true
-          git commit -m "به‌روزرسانی base64 subscription - $(date '+%Y-%m-%d %H:%M')" || echo "هیچ تغییری نبود"
-          git push || echo "push انجام نشد"
+          git add telegram_configs.txt telegram_configs_base64.txt
+          git commit -m "Update configs for $(date '+%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
+          git push || echo "Push failed or no changes"
