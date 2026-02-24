@@ -178,6 +178,7 @@ def save_to_files(all_configs: list) -> list:
     filename = "telegram_configs.txt"
     previous_set = set()
 
+    # خواندن محتوای قبلی (اگر فایل وجود داشته باشد)
     if os.path.exists(filename):
         try:
             with open(filename, "r", encoding="utf-8") as f:
@@ -186,28 +187,33 @@ def save_to_files(all_configs: list) -> list:
         except Exception as e:
             print(f"خطا در خواندن فایل قبلی: {e}")
 
+    # پیدا کردن کانفیگ‌های واقعاً جدید
     new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
 
-    if not new_configs:
-        print("هیچ کانفیگ جدیدی پیدا نشد.")
-        return []
+    # اگر جدید وجود داشت → اضافه به انتهای فایل
+    if new_configs:
+        try:
+            with open(filename, "a", encoding="utf-8") as f:
+                for cfg in new_configs:
+                    f.write(cfg + "\n")
+            print(f"{len(new_configs)} کانفیگ جدید به فایل اضافه شد.")
+        except Exception as e:
+            print(f"خطا در نوشتن در فایل: {e}")
+    else:
+        print("هیچ کانفیگ جدیدی پیدا نشد → فایل txt تغییر نکرد.")
 
-    try:
-        with open(filename, "a", encoding="utf-8") as f:
-            for cfg in new_configs:
-                f.write(cfg + "\n")
-        print(f"{len(new_configs)} کانفیگ جدید به فایل اضافه شد.")
-    except Exception as e:
-        print(f"خطا در نوشتن در فایل: {e}")
-
+    # ساخت/به‌روزرسانی فایل base64 — همیشه انجام شود (حتی بدون جدید)
     try:
         with open(filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
+        
         if full_content:
             encoded = base64.b64encode(full_content.encode("utf-8")).decode("utf-8")
             with open("telegram_configs_base64.txt", "w", encoding="utf-8") as f:
                 f.write(encoded)
-            print("فایل base64 بروز شد.")
+            print("فایل telegram_configs_base64.txt ساخته/به‌روزرسانی شد.")
+        else:
+            print("فایل telegram_configs.txt خالی است → base64 ساخته نشد.")
     except Exception as e:
         print(f"خطا در ساخت base64: {e}")
 
