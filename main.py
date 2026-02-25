@@ -178,48 +178,45 @@ def save_to_files(all_configs: list) -> list:
     txt_filename = "telegram_configs.txt"
     base64_filename = "telegram_configs_base64.txt"
 
-    today = datetime.now().date()
+    today_str = datetime.now().strftime("%Y-%m-%d")
 
     previous_set = set()
-    is_new_day = True  # پیش‌فرض: روز جدید فرض می‌کنیم
+    is_new_day = True  # پیش‌فرض: روز جدید
 
     if os.path.exists(txt_filename):
         try:
-            mtime = datetime.fromtimestamp(os.path.getmtime(txt_filename))
-            file_date = mtime.date()
-
-            if file_date == today:
-                is_new_day = False
-                with open(txt_filename, "r", encoding="utf-8") as f:
-                    lines = f.read().splitlines()
-                    previous_set = set(line.strip() for line in lines if line.strip() and not line.startswith('#'))
-            else:
-                print(f"فایل مربوط به روز قبل ({file_date}) است → بازنویسی برای روز جدید")
+            with open(txt_filename, "r", encoding="utf-8") as f:
+                lines = f.read().splitlines()
+                if lines and lines[0].startswith("# Date: "):
+                    file_date = lines[0].split("# Date: ")[1].strip()
+                    if file_date == today_str:
+                        is_new_day = False
+                        previous_set = set(line.strip() for line in lines[1:] if line.strip() and not line.startswith('#'))
+                    else:
+                        print(f"فایل مال روز قبل ({file_date}) است → بازنویسی کامل")
+                else:
+                    print("فایل بدون خط تاریخ است → بازنویسی کامل")
         except Exception as e:
-            print(f"خطا در بررسی تاریخ فایل: {e}")
+            print(f"خطا در چک محتوای فایل: {e} → بازنویسی کامل")
 
-    # کانفیگ‌های واقعاً جدید نسبت به محتوای فعلی فایل
     new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
 
     if not new_configs:
         print("هیچ کانفیگ جدیدی پیدا نشد.")
         return []
 
-    # اگر روز جدید باشد → از اول بنویس (overwrite)
-    # اگر همان روز باشد → اضافه کن (append)
     mode = "w" if is_new_day else "a"
 
     try:
         with open(txt_filename, mode, encoding="utf-8") as f:
-            if mode == "w":
-                f.write(f"# Generated for {today.strftime('%Y-%m-%d')}\n")
+            if is_new_day:
+                f.write(f"# Date: {today_str}\n")
             for cfg in new_configs:
                 f.write(cfg + "\n")
         print(f"{len(new_configs)} کانفیگ {'جدید اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد'}")
     except Exception as e:
         print(f"خطا در نوشتن فایل txt: {e}")
 
-    # همیشه base64 از محتوای نهایی txt ساخته شود
     try:
         with open(txt_filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
