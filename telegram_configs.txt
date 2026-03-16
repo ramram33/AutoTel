@@ -18,3 +18,8 @@ vless://c558328b-eb46-424c-b9e0-574770f0b072@rtg.ae1autumn.cc.cd:80?path=%2Fxixv
 vless://05519058-d2ac-4f28-9e4a-2b2a1386749e@15.236.174.14:22224?path=%2Ftelegram-channel-vlessconfig&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=trojan.burgerip.co.uk#@V2ray4Free1
 trojan://f389ed926e512e15f382dc3804029474@153.121.45.139:4937/?type=tcp&security=tls&sni=www.nintendogames.net#@V2ray4Free1
 vless://2eebbb28-ea1d-4fad-8f14-9c16b8544d04@dark.parvaz.click:25020?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
+vless://6492fd55-4ab8-4da5-bed4-83e5c3f5b178@www.goldenshopify.ir:2031?security=&encryption=none&headerType=none&type=tcp#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.188.40.40:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.37.160.17:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://eca9ff44-edfa-4071-cadb-6c4b51e776fc@mtnx.ircf.space:8443?mode=gun&security=tls&encryption=none&insecure=0&type=grpc&allowInsecure=0#@V2ray4Free1
+vless://049f0970-4160-f0f1-9519-0e9349419709@mak3.vpsino.com:20960?security=none&encryption=none&host=nobitex.ir&headerType=none&type=tcp#@V2ray4Free1
