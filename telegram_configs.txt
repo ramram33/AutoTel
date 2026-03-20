@@ -15,3 +15,6 @@ vless://705f96ea-9a3f-9d89-4ed9-c1b8b6e802da@tunn.vpsino.com:2092?security=none&
 vless://5b8b4ec7-86d6-4dad-8b5b-d00d7b963b1c@hamrahiran.sorenashoping.xyz:16375?type=tcp&encryption=none&path=%2F&host=Fast.com&headerType=http&security=none#@V2ray4Free1
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3Z2llUnNWRDZoWFhGWWQyenRwaXNE@216.105.168.18:443/?outline=1&prefix=%16%03%01%00%C2%A8%01%01#@V2ray4Free1
 vless://705f96ea-9a3f-9d89-4ed9-c1b8b6e802da@tunn.vpsino.com:2096?security=none&type=tcp&headerType=none&path=%2F&host=nobitex.ir#@V2ray4Free1
+vless://ffe756b3-a5c1-43c6-b1ef-19d216223385@star.jeyranim.ir:2053?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.36.80.221:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://ee9b0614-50ec-41b6-951b-e1d5d755fa4b@glob.thisiswe.uno:2053?path=%2F&security=tls&encryption=none&insecure=0&host=p1.thisiswe.uno&fp=chrome&type=ws&allowInsecure=0&sni=p1.thisiswe.uno#@V2ray4Free1
