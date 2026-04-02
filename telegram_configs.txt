@@ -19,3 +19,10 @@ vless://5ab61ef7-7d4e-46f9-aaa8-5c3d230874f8@185.143.233.120:443?path=%2F%3Fed%3
 trojan://kooYwJ9Zw0@newfood.ifasthost.ir:443?type=ws&host=newfood.ifasthost.ir&path=/food2&security=tls&fp=chrome&alpn=h2,http/1.1#@V2ray4Free1
 vless://195a2a47-76fa-4e76-9cd2-f29913c5a7f4@po.tehranionliine.ir:80?security=none&allowInsecure=0&encryption=none&type=ws&path=/#@V2ray4Free1
 vless://64d55326-fb18-4a17-8b96-d88fc091db42@185.143.233.5:80?encryption=none&host=t.afaghqi.ir&path=%2Fapi%2Fv2&security=none&type=ws#@V2ray4Free1
+vless://09594db5-7912-4c12-bbed-8cdee31daaf7@rfiksma.top:13232?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
+vless://6e048ca4-e9c0-430a-a163-f354ae4b1d37@panel-10564fc4b6-Majid.apps.ir-central1.speedtractor.cam:2082?path=%2Fek%2Firinn%2Fgoogle.com%2F1080p%2F&security=none&encryption=none&host=google.com&type=ws#@V2ray4Free1
+vless://db3df5e2-231c-44c6-83ff-7afe8a154fcc@new.imap33.site:8443?security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&headerType=&fp=chrome&type=tcp&sni=cp.dsdivar.ir#@V2ray4Free1
+vless://19f3a750-e0a7-4210-ad3e-694892266e44@vip.securnetwork.lol:8443?security=none&encryption=none&host=fast.com&headerType=http&type=tcp#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.38.154.88:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@63.183.109.175:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://83e830f3-3994-46a7-9b5c-3ae002bcb19f@avashop.info:44555?security=none&allowInsecure=0&encryption=none&type=tcp&headerType=none#@V2ray4Free1
