@@ -33,3 +33,5 @@ vless://6e42eb2b-151a-4441-a17f-5bd107fd2065@snapp.ir:80?encryption=none&type=ws
 vless://4141eec6-2928-4f11-9c28-2c9560ea084c@snapp.ir:80?security=none&type=ws&headerType=&path=%2F&host=arc.liarashop.ir#@V2ray4Free1
 vless://4141eec6-2928-4f11-9c28-2c9560ea084c@snapp.ir:80?security=none&type=ws&headerType=&path=%2F&host=ar.liarashop.ir#@V2ray4Free1
 vless://f0004a83-7404-458d-999a-4a740749a415@snapp.ir:80?security=none&allowInsecure=0&encryption=none&type=ws&host=arc.liarashop.ir&path=/#@V2ray4Free1
+vmess://eyJuZXQiOiJ0Y3AiLCJzY3kiOiJhdXRvIiwiaWQiOiJkZmEyY2FlOS0yZDJhLTQzZmEtOWI4ZS0xMDA5MTA4YTI0Y2EiLCJhZGQiOiJzdGFyLnJlYXRhLmlyIiwidHlwZSI6Im5vbmUiLCJ0bHMiOiJub25lIiwicHMiOiIlRDglQUMlRDklODclRDglQUElMjAlRDglQUUlRDglQjElREIlOEMlRDglQUYlMjBzNG1mYSIsInBvcnQiOiIyOTM5MCJ9#@V2ray4Free1
+vmess://eyJwb3J0IjoiMjkzOTAiLCJ0bHMiOiJub25lIiwic2N5IjoiYXV0byIsImlkIjoiZTQ4OTdkYzEtNjY0ZS00MjMyLWExNDItMzc5MmIyZWJjYTVmIiwicHMiOiJzNG1mYSUyMCVEOCVBQyVEOSU4NyVEOCVBQSUyMCVEOCVBRSVEOCVCMSVEQiU4QyVEOCVBRiUyMCVEOCVBQSVEOSU4NCVEQSVBOSVEOCVCMSVEOCVBNyVEOSU4NSIsImFkZCI6InN0YXIucmVhdGEuaXIiLCJ0eXBlIjoibm9uZSIsIm5ldCI6InRjcCJ9#@V2ray4Free1
