@@ -1,2 +1,5 @@
 # Date: 2026-04-07
 trojan://telegram-id-privatevpns@3.121.164.51:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@52.47.115.113:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://672e24f6-9e59-45c0-95db-9d8d07b6f69a@193.151.141.46:443?security=tls&allowInsecure=0&encryption=none&type=ws&path=/chat/api/v4/websocket-khrm&sni=files.khrm.ir&fp=randomized#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.36.197.1:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
