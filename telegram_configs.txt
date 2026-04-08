@@ -1,3 +1,5 @@
 # Date: 2026-04-08
 trojan://telegram-id-privatevpns@35.157.169.92:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 vless://a221bf70-0e0d-4403-9952-ffbb2d6fd5f6@ir3.cdnk1.cfd:443?path=%2Ftime&security=tls&encryption=none&insecure=0&host=ir3.cdnk1.cfd&type=ws&allowInsecure=0#@V2ray4Free1
+vmess://eyJmcCI6IiIsImF1dGhvcml0eSI6IiIsImV4dHJhIjoiIiwiaG9zdCI6IiIsInNlcnZpY2VOYW1lIjoibm9uZSIsImZyYWdtZW50IjoiIiwiYWxwbiI6IiIsImFkZCI6ImRuLmJyd2FraGFuYmFyaW4uaXIiLCJwYXRoIjoiIiwiYWlkIjoiMCIsInYiOiIyIiwidHlwZSI6Im5vbmUiLCJkZXZpY2VJRCI6IiIsImlkIjoiYWVmMjc4MmUtMzcwNy00NWM5LWE5NDEtNWE3YmY5ZmZlMmRiIiwibmV0IjoidGNwIiwidGxzIjoibm9uZSIsInNlZWQiOiIiLCJwb3J0IjoiODA4MCIsInNuaSI6IiIsImhlYWRlclR5cGUiOiJub25lIiwicHMiOiJWaWFwaW5nMkdCIiwibW9kZSI6IiJ9#@V2ray4Free1
+trojan://telegram-id-privatevpns@51.45.56.96:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
