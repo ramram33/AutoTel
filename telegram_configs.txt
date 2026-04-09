@@ -1,2 +1,4 @@
 # Date: 2026-04-09
 trojan://telegram-id-privatevpns@18.193.18.163:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.37.214.83:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.37.25.98:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
