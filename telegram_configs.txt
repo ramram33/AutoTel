@@ -1,3 +1,6 @@
 # Date: 2026-04-12
 trojan://telegram-id-privatevpns@3.121.58.242:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 trojan://telegram-id-privatevpns@13.39.249.232:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.157.47.55:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://d6b7d54e-4c41-1186-f86a-4291cdf80fe1@104.18.12.149:8443?path=%2Fpowerfull%3Fed%3D2048&security=tls&encryption=none&insecure=0&host=aAJIBE.offliNe-yoUu.ir&type=ws&allowInsecure=0&sni=aAJIBE.offliNe-yoUu.ir#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.39.184.253:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
