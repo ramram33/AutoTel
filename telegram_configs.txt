@@ -5,3 +5,6 @@ trojan://telegram-id-privatevpns@3.65.163.13:22222?security=tls&alpn=http/1.1&he
 vless://0fc605b1-1e04-49c4-bdef-2f4c21cd1a23@185.143.233.235:80?security=none&encryption=none&host=vixon.portab.org&type=ws#@V2ray4Free1
 trojan://telegram-id-privatevpns@51.44.56.66:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 trojan://telegram-id-privatevpns@15.237.145.187:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@51.44.188.122:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@8.6.112.6:443?path=%2F&security=tls&encryption=none&insecure=0&host=sni.111000.v6.navy&type=ws&allowInsecure=0&sni=sni.111000.v6.navy#@V2ray4Free1
+trojan://telegram-id-privatevpns@51.102.234.219:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
