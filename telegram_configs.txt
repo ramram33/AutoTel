@@ -2,3 +2,6 @@
 vmess://eyJhZGQiOiJzdGFyLnA0MC5zaXRlIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJBcGFyYXQuY29tIiwiaWQiOiI2NWRiNThiNi03OTMyLTQ1NzgtODI0MS05MzdlNThjYzEzOWEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiI1Njc4IiwicHMiOiIyMCBHQiBAVHJ4bG5zIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==#@V2ray4Free1
 vmess://eyJhZGQiOiJzdGFyLnA0MC5zaXRlIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJBcGFyYXQuY29tIiwiaWQiOiI2NWRiNThiNi03OTMyLTQ1NzgtODI0MS05MzdlNThjYzEzOWEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiI1Njc4IiwicHMiOiIyMCBHQiBAVHJ4bG5zIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscy💋I6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==#@V2ray4Free1
 trojan://telegram-id-privatevpns@3.65.163.13:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://0fc605b1-1e04-49c4-bdef-2f4c21cd1a23@185.143.233.235:80?security=none&encryption=none&host=vixon.portab.org&type=ws#@V2ray4Free1
+trojan://telegram-id-privatevpns@51.44.56.66:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.237.145.187:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
