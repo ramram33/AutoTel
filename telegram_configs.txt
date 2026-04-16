@@ -1,10 +1,4 @@
-# Date: 2026-04-15
-vmess://eyJhZGQiOiJzdGFyLnA0MC5zaXRlIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJBcGFyYXQuY29tIiwiaWQiOiI2NWRiNThiNi03OTMyLTQ1NzgtODI0MS05MzdlNThjYzEzOWEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiI1Njc4IiwicHMiOiIyMCBHQiBAVHJ4bG5zIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==#@V2ray4Free1
-vmess://eyJhZGQiOiJzdGFyLnA0MC5zaXRlIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJBcGFyYXQuY29tIiwiaWQiOiI2NWRiNThiNi03OTMyLTQ1NzgtODI0MS05MzdlNThjYzEzOWEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiI1Njc4IiwicHMiOiIyMCBHQiBAVHJ4bG5zIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscy💋I6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==#@V2ray4Free1
-trojan://telegram-id-privatevpns@3.65.163.13:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-vless://0fc605b1-1e04-49c4-bdef-2f4c21cd1a23@185.143.233.235:80?security=none&encryption=none&host=vixon.portab.org&type=ws#@V2ray4Free1
-trojan://telegram-id-privatevpns@51.44.56.66:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-trojan://telegram-id-privatevpns@15.237.145.187:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-trojan://telegram-id-privatevpns@51.44.188.122:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-vless://6202b230-417c-4d8e-b624-0f71afa9c75d@8.6.112.6:443?path=%2F&security=tls&encryption=none&insecure=0&host=sni.111000.v6.navy&type=ws&allowInsecure=0&sni=sni.111000.v6.navy#@V2ray4Free1
-trojan://telegram-id-privatevpns@51.102.234.219:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+# Date: 2026-04-16
+vmess://eyJhZGQiOiJzdGFyLnA0MC5zaXRlIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJBcGFyYXQuY29tIiwiaWQiOiJiOWQwZGFiOC1iZWM4LTRmZDYtOGJmOC0xZjYzYjQxZWQzMzIiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiI1Njc4IiwicHMiOiJAY29uZmludGciLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9#@V2ray4Free1
+trojan://telegram-id-privatevpns@3.66.203.131:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://54e0d36b-1418-4f5c-9f26-0d8e49eee262@azad1.bingnet.online:443?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
