@@ -17,3 +17,5 @@ vless://bce6cee2-c3bc-40ea-89b4-fb5de15c5d38@185.143.234.235:80?security=none&en
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@8.6.112.6:2096?path=%2F&security=tls&encryption=none&insecure=0&host=sni.jpmj.dev&type=ws&allowInsecure=0&sni=sni.jpmj.dev#@V2ray4Free1
 trojan://humanity@127.0.0.1:40443?path=%2Fassignment&security=tls&insecure=1&host=www.creationlong.org&type=ws&allowInsecure=1&sni=www.creationlong.org#@V2ray4Free1
 vless://4e2b604a-d9ac-47f1-9892-e714bef4905e@127.0.0.1:40443?encryption=none&security=tls&sni=persiaaa.persiatmw.us&fp=chrome&alpn=h2%2Chttp%2F1.1&insecure=0&allowInsecure=0&type=xhttp&host=persiaaa.persiatmw.us&path=%2Fassignment&mode=auto#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.188.200.62:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@63.179.16.188:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
