@@ -1,8 +1,2 @@
-# Date: 2026-04-17
-trojan://telegram-id-privatevpns@18.195.189.105:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-vless://dae99770-3725-4fd9-86a2-88ebdb68d659@37.152.189.74:4431?type=ws&path=%2Fek%2Firinn%2Flive%2F1080p%2F&host=live-azd1102.telewebion.ir&security=tls&encryption=none&fp=chrome&alpn=h2%2Chttp%2F1.1#@V2ray4Free1
-trojan://telegram-id-privatevpns@15.188.2.109:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-trojan://telegram-id-privatevpns@15.237.5.194:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-trojan://telegram-id-privatevpns@3.123.49.45:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-trojan://telegram-id-privatevpns@15.236.63.145:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
-vless://f9d9a8e6-7df0-4c7b-bb2d-97d1c7e14f1f@45.82.136.188:443?path=%2F&security=tls&encryption=none&insecure=1&type=ws&allowInsecure=1&sni=webassets.cafebazaar.ir#@V2ray4Free1
+# Date: 2026-04-18
+trojan://telegram-id-privatevpns@3.65.185.26:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
