@@ -25,6 +25,7 @@ if not SESSION_STRING:
 TELEGRAM_CHANNELS = [
     '@arisping',
     '@PrivateVPNs',
+    '@Configir98',
     '@AzadLinkIran',
     '@Vpn_m2s',
     '@amirambitfree',
