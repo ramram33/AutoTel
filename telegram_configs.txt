@@ -4,3 +4,5 @@ trojan://telegram-id-privatevpns@13.36.75.60:22222?security=tls&alpn=http/1.1&he
 trojan://telegram-id-privatevpns@13.39.164.242:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 vless://5d5cff09-b646-46f0-8e2b-3e510f660e37@vpn.ulteracrypto.site:34303?type=tcp&encryption=none&security=none#@V2ray4Free1
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@5.57.33.95:56509?path=%2F%3Fed%3D2560%26Telegram%20%40i10VPN&security=tls&encryption=none&insecure=1&host=sni.111000.indevs.in&type=ws&allowInsecure=1&sni=sni.111000.indevs.in#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.39.190.72:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.156.70.160:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
