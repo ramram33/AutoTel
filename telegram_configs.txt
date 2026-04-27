@@ -16,3 +16,5 @@ vless://d24e1b75-d80f-4818-d621-ee919ea71c16@94.183.149.168:8880?path=%2F&securi
 vless://850255c0-8444-4b92-bf3f-01cde9f52fab@office.weai.ir:443?encryption=none&type=tcp&security=reality&headerType=none&sni=git.revi.voto&fp=chrome&allowInsecure=1&pbk=065ekp_uJftu5-HVe7NziOIS7ajpv0dylhsJK6ylzRE&sid=ffe4b45f7e2f0778&spx=%2F#@V2ray4Free1
 vless://a65f39a1-7a08-469c-83af-78b3bf7044cc@app.palmal.site:36517?security=&encryption=none&headerType=&type=tcp#@V2ray4Free1
 vless://36029350-08c4-4c1e-aa9d-4507359b054d@vercel.com:443/?type=tcp&encryption=none&flow=&security=tls&sni=vercel.com#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.236.1.234:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.224.77.136:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
