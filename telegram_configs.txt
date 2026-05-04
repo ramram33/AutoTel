@@ -23,3 +23,10 @@ trojan://telegram-id-privatevpns@35.181.209.187:22222?security=tls&alpn=http/1.1
 trojan://telegram-id-privatevpns@52.47.165.159:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 vless://a3f3a69a-1468-43f3-9f7f-11c05d183dc6@185.143.234.235:80?path=%2F&security=none&encryption=none&host=al1.apicallminecrafegame.online&type=ws#@V2ray4Free1
 vless://6202b230-41c-4d8e-b624-0f71afa95d@.38.142.152:443?enr%22%55z%%%8%%%%%%%%©%%%%%7997%f%snffd%%djbcrhhv#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.188.230.176:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://66f73678-34a5-4863-bd7b-cba151a2562e@185.143.233.5:2086?path=%2F&security=none&encryption=none&host=cdn.sesrsa.com&type=ws#@V2ray4Free1
+trojan://telegram-id-privatevpns@18.192.237.68:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://8c4604ef-749c-4b56-adf1-7da405002a21@216.24.57.1:443?path=%2F&security=tls&encryption=none&insecure=0&host=qyi.fqjd663.ggff.net&type=ws&allowInsecure=0&sni=qyi.fqjd663.ggff.net#@V2ray4Free1
+vless://44203abd-18b1-4316-b972-a37e8bbce930@tik.var.hi-phonee.ir:50216?type=ws&encryption=none&path=%2F&host=&security=none#@V2ray4Free1
+trojan://humanity@8.6.112.0:443?path=%2Fassignment&security=tls&insecure=0&host=www.multiplydose.com&type=ws&allowInsecure=0&sni=www.multiplydose.com#@V2ray4Free1
+vless://5f867baa-735a-475d-84f7-41a2ab339c5e@camp.nahidapp.com:443?encryption=none&host=camp.nahidapp.com&path=%2FIF_VPN_Bot&security=tls&type=ws#@V2ray4Free1
