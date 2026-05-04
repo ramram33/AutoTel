@@ -19,3 +19,7 @@ vless://8500fbd1-bba9-4fc1-94b7-69dbd1f30556@185.143.233.5:443?path=%2F%%3Fed%3D
 vless://1fb1cd51-44ef-4086-a301-a2db823c3318@5.61.29.254:80?type=tcp&security=none#@V2ray4Free1
 vless://eef82e78-5a10-ac23-747b-43569143c696@i-love-iran.amlakayuni.ir:2087?path=%2F%3Fed%3D2087&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=i-love-iran.amlakayuni.ir&fp=randomized&type=ws&allowInsecure=0&sni=i-love-iran.amlakayuni.ir#@V2ray4Free1
 vless://49a0a5d8-ab1d-47ab-b70a-137142ff9d6e@ikco.ir:8080?encryption=none&security=none&type=ws&host=cp.movizdl.ir&path=%2Fcdn#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.181.209.187:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@52.47.165.159:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://a3f3a69a-1468-43f3-9f7f-11c05d183dc6@185.143.234.235:80?path=%2F&security=none&encryption=none&host=al1.apicallminecrafegame.online&type=ws#@V2ray4Free1
+vless://6202b230-41c-4d8e-b624-0f71afa95d@.38.142.152:443?enr%22%55z%%%8%%%%%%%%©%%%%%7997%f%snffd%%djbcrhhv#@V2ray4Free1
