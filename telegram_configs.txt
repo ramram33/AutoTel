@@ -8,3 +8,8 @@ vless://3dd18d90-6bea-4c9a-ab37-63e89b7700ca@5.159.54.140:443?encryption=none&ty
 vless://4d400592-45a1-4e05-80f6-8581658e71eb@5.159.54.140:443?encryption=none&type=tcp&security=reality&headerType=none&sni=aparat.com&fp=firefox&allowInsecure=1&pbk=A6_kAMUcoxeuilXwMvzPYFAP8ekULjxDu4KmQssG7Gc&sid=510b7f2f&spx=%2F#@V2ray4Free1
 vless://64b0bb03-4765-452b-aaa0-96df40aac697@Ikco.ir:8080?path=%2Fcdn&security=none&encryption=none&host=cp.movizdl.ir&type=ws#@V2ray4Free1
 vless://9f6979f5-fec9-4f40-b5f9-15dde47c6b91@185.143.233.5:2052?path=%2F&security=none&encryption=none&host=cdn.sesrsa.com&type=ws#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.180.106.124:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@51.45.11.214:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://911db064-eedd-7dcc-56ff-24ab47b73de8@me.ciliko.ir:80?path=%2F&security=&encryption=none&host=me.ciliko.ir&type=ws#@V2ray4Free1
+vless://85b02020-45b9-4df7-b7c4-054838776308@snapp.ir:8880?path=%2F&security=&encryption=none&host=ped.maktabmotahari.ir&type=ws#@V2ray4Free1
+vless://77651943-3bfd-46be-9312-d80d10350c60@snapp.ir:80?path=%2F%3Fed%3D2080&security=none&encryption=none&host=1.jojo.avenflow.ir&type=ws#@V2ray4Free1
