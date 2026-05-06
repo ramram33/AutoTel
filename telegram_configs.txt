@@ -15,3 +15,7 @@ vless://a56089da-667c-4b22-beed-02eeac876211@185.143.233.235:8080?encryption=non
 vless://0d84cdbd-c0fb-47c6-ab5d-a25587df2a4a@185.143.233.5:80?path=%2Fxray&security=none&encryption=none&host=bot.vipiranian.de&type=ws#@V2ray4Free1
 trojan://telegram-id-privatevpns@13.36.216.227:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 vless://eae6821a-bb4d-4a8f-a511-52c7343da7be@vitallife.gg:443?alpn=http%2F1.1&encryption=none&fp=chrome&host=vitallife.gg&path=%2Fwp-content%2Fcachecache&security=tls&sni=vitallife.gg&type=ws#@V2ray4Free1
+vless://7092c12c-2c20-49f4-bf4c-63f6015bf9ac@snapp.ir:80?type=ws&path=%2F&host=simorgh.darerio.ir&security=none#@V2ray4Free1
+trojan://telegram-id-privatevpns@3.123.135.227:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.224.94.238:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://bc53d36d-68d4-4fc4-bfd0-f3000fc0a105@snapp.ir:80?path=%2F&security=&encryption=none&host=simorgh.darerio.ir&type=ws#@V2ray4Free1
