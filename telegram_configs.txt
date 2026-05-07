@@ -2,3 +2,10 @@
 vless://9692c29e-f714-44a5-abef-430d1169635a@45.90.75.168:2015?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
 trojan://telegram-id-privatevpns@63.184.179.58:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
 vless://9692c29e-f714-44a5-abef-430d1169635a@45.90.75.168:2015?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
+trojan://telegram-id-privatevpns@52.47.129.227:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://4ea381a1-6af5-4d2f-af08-4ba432fd7210@79.143.85.9:4430?mode=auto&path=%2F&security=none&encryption=none&host=varzesh3.com&type=xhttp#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.224.29.207:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://28678e36-7b13-49c4-b206-08dd1490c49a@miller.iransatellite.net:80?security=none&allowInsecure=0&encryption=none&type=ws&path=/#@V2ray4Free1
+vless://bb20e941-52b9-42bc-888e-0bd0c9f25490@miller.iransatellite.net:80?security=none&allowInsecure=0&encryption=none&type=ws&path=/#@V2ray4Free1
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpsWE16VFlyUmw4TGU1Mnk2aDZmcU5pakJNdkhXQVR0NQ%3D%3D@vip3.myspacex.shop:80#@V2ray4Free1
+vless://bb20e941-52b9-42bc-888e-0bd0c9f25490@miller.iransatellite.net:80?security=none&allowInsecure=0&encryption=none&type=ws&path=/#@V2ray4Free1
