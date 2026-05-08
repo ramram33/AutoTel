@@ -27,3 +27,11 @@ vless://613b7f4a-f8e9-4040-85f6-99d037ecafaa@185.143.235.200:80?encryption=none&
 vless://57847df6-3ef1-477f-986c-c8dfb55d4160@185.143.233.235:80?path=%2F&security=&encryption=none&host=d.nsa03.com&type=ws#@V2ray4Free1
 vless://0f149c2e-a0c7-4e14-987b-700369ef64f5@185.143.235.200:80?encryption=none&host=teory2.pointspeed.ir&path=%2Farvancloud.ir&security=none&type=ws#@V2ray4Free1
 vless://3e4ec284-3ac4-491d-9f73-3cab85f860db@camp.nahidapp.com:443?path=%2FIF_VPN_Bot&security=tls&encryption=none&host=camp.nahidapp.com&type=ws#@V2ray4Free1
+trojan://telegram-id-privatevpns@3.79.92.53:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://054be705-6bbf-42cd-9970-acfc325a34ca@SNApp.ir:80?path=%2FHoseisecu&security=&encryption=none&host=MMW.abanservers.ir&type=ws#@V2ray4Free1
+vless://555e503e-2e99-4d0d-9eb5-c997d5231245@snapp.ir:80?path=%2F&security=none&encryption=none&host=atiac3.ghostantaniehh.ir&type=ws#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.188.208.223:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://d32a08d3-dd78-4078-b416-50427e8b455e@185.143.235.200:80?encryption=none&host=teory2.pointspeed.ir&path=%2Farvancloud.ir&security=none&type=ws#@V2ray4Free1
+vless://396f7c98-63ff-435a-a3ce-10cf503ad86a@snapp.ir:8080?encryption=none&type=ws&host=ft.bazisazy.ir&path=/&security=none#@V2ray4Free1
+vless://ae7d645a-c03a-4d21-8047-2f77f315a6b7@snapp.ir:8880?path=%2Felctro&security=none&encryption=none&host=clud.extra-tm.ir&type=ws#@V2ray4Free1
+vless://d3a629d5-97bb-4eb3-991d-efd04ef5c2c5@snapp.ir:80?encryption=none&security=none&type=ws&headerType=none&path=%2Fgraphql%3Fed%3D2560&host=ss9.limitless-cloud.ir#@V2ray4Free1
