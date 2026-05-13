@@ -31,6 +31,7 @@ TELEGRAM_CHANNELS = [
     '@amirambitfree',
     '@FreakConfig',
     '@makvaslim',
+    '@Configir98',
 ]
 
 MY_CHANNEL = '@V2ray4Free1'
