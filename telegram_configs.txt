@@ -7,3 +7,7 @@ trojan://telegram-id-privatevpns@3.71.124.112:22222?security=tls&alpn=http/1.1&h
 vless://5d5e2bf6-c92e-4c75-914f-6aa14d1988e3@SpeeD6630CSf.sismonifarangi.shop:443?path=%2Fleonvpn&security=tls&alpn=h2%2Chttp%2F1.1&encryption=none&insecure=0&host=SpeeD6630CSf.sismonifarangi.shop&fp=chrome&type=ws&allowInsecure=0&sni=SpeeD6630CSf.sismonifarangi.shop#@V2ray4Free1
 vless://8c4604ef-749c-4b56-adf1-7da405002a21@216.24.57.1:443?path=%2F&security=tls&encryption=none&insecure=0&host=qyi.fqjd663.ggff.net&type=ws&allowInsecure=0&sni=qyi.fqjd663.ggff.net#@V2ray4Free1
 vless://c4c23082-e4d1-43d7-a02f-dcfd0e504886@play.nexia.cam:80?type=ws&encryption=none&path=%2F&host=&security=none#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.188.28.43:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.180.235.87:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://9ea9e54b-d4da-4773-855a-e5371e4da946@snapp.ir:80?path=%2F&security=&encryption=none&host=hubfile.zpax.ir&type=ws#@V2ray4Free1
+vless://922f789c-0062-4e06-8ecd-aba5860a6f7a@snapp.ir:80?security=none&allowInsecure=0&encryption=none&type=ws&host=ss8.limitless-cloud.ir&path=/graphql?ed%3D2560#@V2ray4Free1
