@@ -33,3 +33,10 @@ trojan://humanity@127.0.0.1:40443?security=tls&sni=www.creationlong.org&fp=chrom
 trojan://humanity@127.0.0.1:40443?security=tls&sni=www.creationlong.org&insecure=1&allowInsecure=1&type=ws&host=www.creationlong.org&path=%2Fassignment#@V2ray4Free1
 trojan://humanity@127.0.0.1:40443?security=tls&sni=www.calmlunch.com&insecure=0&allowInsecure=0&type=ws&host=www.calmlunch.com&path=%2Fassignment#@V2ray4Free1
 trojan://humanity@127.0.0.1:40443?security=tls&sni=www.multiplydose.com&insecure=0&allowInsecure=0&type=ws&host=www.multiplydose.com&path=%2Fassignment#@V2ray4Free1
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@104.19.229.21:2096?security=tls&allowInsecure=0&encryption=none&type=ws&host=sni.111000.indevs.in&path=/&sni=sni.111000.indevs.in&fp=chrome#@V2ray4Free1
+trojan://telegram-id-privatevpns@15.237.38.184:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://03dce132-3826-4ded-8e6b-4d238126c42b@snapp.ir:443?encryption=none&security=tls&type=ws&headerType=none&path=%2Fgraphql%3Fed%3D2560&host=g11.derakcloud.org&sni=g11.derakcloud.org&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1#@V2ray4Free1
+trojan://telegram-id-privatevpns@13.39.166.105:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+vless://38ca3aed-12c8-43c3-a523-7765136394aa@sub.pricestoryanalysis.ir:80?path=%2Fprice%2F&security=none&encryption=none&host=sub.pricestoryanalysis.ir&type=ws#@V2ray4Free1
+trojan://humanity@104.19.229.21:443?security=tls&type=ws&host=www.multiplydose.com&path=/assignment&sni=www.multiplydose.com#@V2ray4Free1
+trojan://humanity@www.multiplydose.com:443?security=tls&sni=www.multiplydose.com&fp=chrome&allowInsecure=0&type=ws&path=/assignment#@V2ray4Free1
