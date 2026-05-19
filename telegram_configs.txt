@@ -40,3 +40,6 @@ trojan://telegram-id-privatevpns@13.39.166.105:22222?security=tls&alpn=http/1.1&
 vless://38ca3aed-12c8-43c3-a523-7765136394aa@sub.pricestoryanalysis.ir:80?path=%2Fprice%2F&security=none&encryption=none&host=sub.pricestoryanalysis.ir&type=ws#@V2ray4Free1
 trojan://humanity@104.19.229.21:443?security=tls&type=ws&host=www.multiplydose.com&path=/assignment&sni=www.multiplydose.com#@V2ray4Free1
 trojan://humanity@www.multiplydose.com:443?security=tls&sni=www.multiplydose.com&fp=chrome&allowInsecure=0&type=ws&path=/assignment#@V2ray4Free1
+trojan://telegram-id-privatevpns@52.47.138.221:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
+trojan://humanity@127.0.0.1:40443?security=tls&sni=www.creationlong.org&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=www.creationlong.org&path=%2Fassignment#@V2ray4Free1
+trojan://telegram-id-privatevpns@35.156.35.32:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
