@@ -63,6 +63,9 @@ async def fetch_configs():
     all_configs = set()
     client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
+    SPECIAL_GROUP = '@makvaslim'
+    MAX_CONFIGS_FROM_GROUP = 40
+
     try:
         await client.start()
         print("✅ اتصال برقرار شد...\n")
@@ -79,6 +82,10 @@ async def fetch_configs():
                 print(f"🔎 بررسی کانال: {channel}")
 
                 last_id = 0
+                channel_count = 0
+                is_special_group = (channel == SPECIAL_GROUP)
+                group_added_configs = set() if is_special_group else None
+
                 while True:
                     messages = await client(GetHistoryRequest(
                         peer=entity, limit=100, offset_id=last_id,
@@ -92,13 +99,19 @@ async def fetch_configs():
 
                     for msg in messages.messages:
                         if msg.date < time_threshold:
+                            print(f"   ∟ رسید به پیام قبل از امروز → توقف اسکن {channel}")
                             stop_scanning = True
                             break
 
                         if msg.message:
                             direct = CONFIG_PATTERN.findall(msg.message)
                             if direct:
+                                before = len(all_configs)
                                 all_configs.update(direct)
+                                newly_added = len(all_configs) - before
+                                channel_count += newly_added
+                                if is_special_group:
+                                    group_added_configs.update(direct)
 
                             urls = SUB_LINK_PATTERN.findall(msg.message)
                             for url in urls:
@@ -107,11 +120,28 @@ async def fetch_configs():
                                 sub_content = await asyncio.to_thread(fetch_sub_content, url)
                                 sub_configs = CONFIG_PATTERN.findall(sub_content)
                                 if sub_configs:
+                                    before = len(all_configs)
                                     all_configs.update(sub_configs)
+                                    newly_added = len(all_configs) - before
+                                    channel_count += newly_added
+                                    if is_special_group:
+                                        group_added_configs.update(sub_configs)
+
+                        if is_special_group and len(group_added_configs) >= MAX_CONFIGS_FROM_GROUP:
+                            print(f"   ∟ به حداکثر {MAX_CONFIGS_FROM_GROUP} کانفیگ از {channel} رسیدیم → توقف")
+                            stop_scanning = True
+                            break
+
+                    if is_special_group and len(group_added_configs) >= MAX_CONFIGS_FROM_GROUP:
+                        break
 
                     if stop_scanning or len(messages.messages) < 100:
                         break
+
                     last_id = messages.messages[-1].id
+
+                special_count = len(group_added_configs) if is_special_group else "نامحدود"
+                print(f"   ✅ از {channel} تعداد تقریبی {channel_count} کانفیگ پردازش شد (منحصربه‌فرد: {special_count})\n")
 
             except Exception as e:
                 print(f"❌ خطا در بررسی {channel}: {e}")
@@ -148,20 +178,19 @@ async def fetch_npv_files(client):
                     if msg.date < datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0):
                         break
 
-                    if msg.document and msg.file and msg.file.name:
-                        if msg.file.name.lower().endswith(NPV_EXTENSION):
-                            file_bytes = await msg.download_media(bytes)
-                            file_hash = get_file_hash(file_bytes)
+                    if msg.document and msg.file and msg.file.name and msg.file.name.lower().endswith(NPV_EXTENSION):
+                        file_bytes = await msg.download_media(bytes)
+                        file_hash = get_file_hash(file_bytes)
 
-                            if file_hash in sent_hashes:
-                                print(f"   ⏭ فایل تکراری: {msg.file.name}")
-                                continue
+                        if file_hash in sent_hashes:
+                            print(f"   ⏭ فایل تکراری: {msg.file.name}")
+                            continue
 
-                            base_name = os.path.splitext(msg.file.name)[0]
-                            new_filename = f"{base_name}_@V2ray4Free1{NPV_EXTENSION}"
+                        base_name = os.path.splitext(msg.file.name)[0]
+                        new_filename = f"{base_name}_@V2ray4Free1{NPV_EXTENSION}"
 
-                            npv_files.append((file_bytes, new_filename, file_hash))
-                            print(f"   📄 فایل NPV جدید: {new_filename}")
+                        npv_files.append((file_bytes, new_filename, file_hash))
+                        print(f"   📄 فایل NPV جدید پیدا شد: {new_filename}")
 
                 if len(messages.messages) < 50:
                     break
@@ -234,14 +263,15 @@ async def post_to_channel(configs: list, npv_files: list):
         while i < len(configs):
             chunk = configs[i:i + chunk_size]
             message = "```\n" + "\n".join(chunk) + "\n```"
+
             if len(message) <= 3800:
                 await client.send_message(MY_CHANNEL, message)
-                print(f"بخش {block_number} (لینک) ارسال شد")
+                print(f"بخش {block_number} ارسال شد")
                 await asyncio.sleep(10)
                 i += chunk_size
                 block_number += 1
             else:
-                # تقسیم بلوک طولانی
+                print(f"بخش {block_number} طولانی → تقسیم شد")
                 half = len(chunk) // 2
                 await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk[:half]) + "\n```")
                 await asyncio.sleep(5)
@@ -255,6 +285,9 @@ async def post_to_channel(configs: list, npv_files: list):
             await client.send_file(MY_CHANNEL, file_bytes, caption=filename)
             print(f"📤 فایل NPV ارسال شد: {filename}")
             await asyncio.sleep(8)
+
+        # ذخیره هش برای جلوگیری از تکرار
+        save_sent_npv_hashes(npv_files)
 
     finally:
         await client.disconnect()
