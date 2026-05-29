@@ -17,7 +17,7 @@ load_dotenv()
 # تنظیمات از محیط (در GitHub Actions از Secrets خوانده می‌شود)
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
-SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")  # رشته StringSession
+SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")
 
 if not SESSION_STRING:
     raise ValueError("TELEGRAM_SESSION_STRING در محیط تعریف نشده است. لطفاً در GitHub Secrets اضافه کنید.")
@@ -31,7 +31,6 @@ TELEGRAM_CHANNELS = [
     '@amirambitfree',
     '@FreakConfig',
     '@makvaslim',
-    '@Configir98',
 ]
 
 MY_CHANNEL = '@V2ray4Free1'
@@ -60,12 +59,10 @@ def fetch_sub_content(url):
 async def fetch_configs():
     all_configs = set()
 
-    # استفاده از StringSession بدون فایل روی دیسک
     client = TelegramClient(
         StringSession(SESSION_STRING),
         API_ID,
         API_HASH
-        # بدون پروکسی در محیط Actions
     )
 
     SPECIAL_GROUP = '@makvaslim'
@@ -183,8 +180,9 @@ def save_to_files(all_configs: list) -> list:
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     previous_set = set()
-    is_new_day = True  # پیش‌فرض: روز جدید
+    is_new_day = True
 
+    # چک کردن تاریخ فایل
     if os.path.exists(txt_filename):
         try:
             with open(txt_filename, "r", encoding="utf-8") as f:
@@ -194,31 +192,29 @@ def save_to_files(all_configs: list) -> list:
                     if file_date == today_str:
                         is_new_day = False
                         previous_set = set(line.strip() for line in lines[1:] if line.strip() and not line.startswith('#'))
-                    else:
-                        print(f"فایل مال روز قبل ({file_date}) است → بازنویسی کامل")
-                else:
-                    print("فایل بدون خط تاریخ است → بازنویسی کامل")
-        except Exception as e:
-            print(f"خطا در چک محتوای فایل: {e} → بازنویسی کامل")
+        except:
+            pass  # اگر خطایی بود، روز جدید فرض می‌کنیم
 
+    # پیدا کردن کانفیگ‌های واقعاً جدید
     new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
 
     if not new_configs:
         print("هیچ کانفیگ جدیدی پیدا نشد.")
         return []
 
+    # نوشتن در فایل
     mode = "w" if is_new_day else "a"
-
     try:
         with open(txt_filename, mode, encoding="utf-8") as f:
             if is_new_day:
                 f.write(f"# Date: {today_str}\n")
             for cfg in new_configs:
                 f.write(cfg + "\n")
-        print(f"{len(new_configs)} کانفیگ {'جدید اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد'}")
+        print(f"{len(new_configs)} کانفیگ {'جدید اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد (overwrite)'}")
     except Exception as e:
         print(f"خطا در نوشتن فایل txt: {e}")
 
+    # ساخت base64 از محتوای کامل فایل
     try:
         with open(txt_filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
@@ -241,12 +237,10 @@ async def post_to_channel(new_configs: list):
         StringSession(SESSION_STRING),
         API_ID,
         API_HASH
-        # بدون پروکسی
     )
     
     try:
         await client.start()
-        print("کلاینت برای ارسال پست‌ها آماده شد")
 
         now_jalali = jdatetime.date.today()
         weekdays_fa = ["شنبه", "یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
@@ -254,7 +248,7 @@ async def post_to_channel(new_configs: list):
         month_names_fa = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
                           "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
         month_name = month_names_fa[now_jalali.month - 1]
-       # زمان به وقت ایران
+
         tehran_tz = ZoneInfo("Asia/Tehran")
         now_tehran = datetime.now(tehran_tz)
         time_str = now_tehran.strftime("%H:%M")
@@ -266,7 +260,7 @@ async def post_to_channel(new_configs: list):
             f"تعداد جدید: {len(new_configs)} کانفیگ 👇"
         )
         await client.send_message(MY_CHANNEL, first_message)
-        print("پیام اول (تعداد جدید) ارسال شد")
+        print("پیام اول ارسال شد")
         await asyncio.sleep(10)
 
         chunk_size = 15
@@ -279,31 +273,28 @@ async def post_to_channel(new_configs: list):
 
             if len(message) <= 3800:
                 await client.send_message(MY_CHANNEL, message)
-                print(f"بخش {block_number} ارسال شد (اندازه: {len(chunk)} کانفیگ)")
+                print(f"بخش {block_number} ارسال شد")
                 await asyncio.sleep(10)
                 i += chunk_size
                 block_number += 1
             else:
-                print(f"بخش {block_number} طولانی است (طول: {len(message)}) → تقسیم به دو قسمت")
-                
+                print(f"بخش {block_number} طولانی → تقسیم به دو قسمت")
                 half = len(chunk) // 2
                 chunk1 = chunk[:half]
                 chunk2 = chunk[half:]
 
-                msg1 = "```\n" + "\n".join(chunk1) + "\n```"
-                await client.send_message(MY_CHANNEL, msg1)
-                print(f"   نیمه اول (اندازه: {len(chunk1)}) ارسال شد")
+                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk1) + "\n```")
+                print(f"   نیمه اول ارسال شد")
                 await asyncio.sleep(5)
 
-                msg2 = "```\n" + "\n".join(chunk2) + "\n```"
-                await client.send_message(MY_CHANNEL, msg2)
-                print(f"   نیمه دوم (اندازه: {len(chunk2)}) ارسال شد")
+                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk2) + "\n```")
+                print(f"   نیمه دوم ارسال شد")
                 await asyncio.sleep(10)
 
                 i += chunk_size
                 block_number += 1
 
-        print(f"ارسال تمام {len(new_configs)} کانفیگ جدید به {MY_CHANNEL} به پایان رسید")
+        print(f"ارسال {len(new_configs)} کانفیگ جدید به پایان رسید")
 
     except errors.FloodWaitError as e:
         print(f"فلود: باید {e.seconds} ثانیه صبر کنی")
@@ -320,4 +311,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nتوسط کاربر متوقف شد.")
     except Exception as e:
-        print(f"خطای کلی در اجرای اسکریپت: {e}")
+        print(f"خطای کلی: {e}")
