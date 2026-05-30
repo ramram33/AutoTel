@@ -2,10 +2,10 @@ name: NPVT Files Collector
 
 on:
   schedule:
-    - cron: '0 11 * * *'    # رأس ساعت ۱۱:۰۰ UTC
-    - cron: '0 16 * * *'    # رأس ساعت ۱۶:۰۰ UTC
-    - cron: '0 22 * * *'    # رأس ساعت ۲۲:۰۰ UTC
-  workflow_dispatch:        # امکان اجرای دستی
+    - cron: '30 7 * * *'     # ۱۱:۰۰ صبح ایران (۷:۳۰ UTC)
+    - cron: '30 12 * * *'    # ۱۶:۰۰ عصر ایران (۱۲:۳۰ UTC)
+    - cron: '30 18 * * *'    # ۲۲:۰۰ شب ایران (۱۸:۳۰ UTC)
+  workflow_dispatch:
 
 jobs:
   collect-npvt:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_TOKEN }}   # برای commit فایل tracking (اگر لازم شد)
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,11 +34,10 @@ jobs:
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
         run: python npvt_collector.py
 
-      - name: Commit tracking file (برای حفظ حالت بین اجراها)
+      - name: Commit tracking file
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          
           git add sent_npvt_files.txt || true
-          git commit -m "Update npvt tracking file - $(date '+%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
+          git commit -m "Update npvt tracking - $(date '+%Y-%m-%d %H:%M UTC')" || echo "No changes"
           git push || echo "No push needed"
