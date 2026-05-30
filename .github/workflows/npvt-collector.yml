@@ -14,9 +14,8 @@ jobs:
   collect-npvt:
     runs-on: ubuntu-latest
 
-    # رفع هشدار Node.js 20
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # این خط هشدار را برطرف می‌کند
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
