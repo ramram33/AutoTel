@@ -183,7 +183,6 @@ def save_to_files(all_configs: list) -> list:
     previous_set = set()
     is_new_day = True
 
-    # چک کردن تاریخ فایل
     if os.path.exists(txt_filename):
         try:
             with open(txt_filename, "r", encoding="utf-8") as f:
@@ -192,30 +191,37 @@ def save_to_files(all_configs: list) -> list:
                     file_date = lines[0].split("# Date: ")[1].strip()
                     if file_date == today_str:
                         is_new_day = False
-                        previous_set = set(line.strip() for line in lines[1:] if line.strip() and not line.startswith('#'))
-        except:
-            pass  # اگر خطایی بود، روز جدید فرض می‌کنیم
+                        # تشخیص هوشمندتر تکراری
+                        previous_set = set(normalize_config(line) for line in lines[1:] 
+                                         if line.strip() and not line.startswith('#'))
+        except Exception as e:
+            print(f"خطا در خواندن فایل: {e}")
 
-    # پیدا کردن کانفیگ‌های واقعاً جدید
-    new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
+    # نرمال‌سازی و پیدا کردن واقعاً جدیدها
+    new_configs = []
+    for cfg in cleaned_all:
+        normalized = normalize_config(cfg)
+        if normalized not in previous_set:
+            new_configs.append(cfg)
+            previous_set.add(normalized)   # اضافه کردن به مجموعه برای اجراهای بعدی
 
     if not new_configs:
         print("هیچ کانفیگ جدیدی پیدا نشد.")
         return []
 
-    # نوشتن در فایل
     mode = "w" if is_new_day else "a"
+
     try:
         with open(txt_filename, mode, encoding="utf-8") as f:
             if is_new_day:
                 f.write(f"# Date: {today_str}\n")
             for cfg in new_configs:
                 f.write(cfg + "\n")
-        print(f"{len(new_configs)} کانفیگ {'جدید اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد (overwrite)'}")
+        print(f"{len(new_configs)} کانفیگ جدید {'اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد'}")
     except Exception as e:
-        print(f"خطا در نوشتن فایل txt: {e}")
+        print(f"خطا در نوشتن فایل: {e}")
 
-    # ساخت base64 از محتوای کامل فایل
+    # بروزرسانی base64
     try:
         with open(txt_filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
@@ -228,6 +234,29 @@ def save_to_files(all_configs: list) -> list:
         print(f"خطا در ساخت base64: {e}")
 
     return new_configs
+
+
+def normalize_config(config: str) -> str:
+    """نرمال‌سازی کانفیگ برای تشخیص بهتر تکراری‌ها"""
+    # حذف remark و هر چیزی بعد از #
+    if '#' in config:
+        config = config.split('#', 1)[0].strip()
+    
+    # حذف فضای اضافی
+    config = config.strip()
+    
+    # حذف برخی پارامترهای متغیر مثل remark, ps, add و غیره
+    import re
+    # حذف پارامترهای رایج که باعث تفاوت می‌شوند
+    config = re.sub(r'&?ps=[^&]*', '', config)
+    config = re.sub(r'&?add=[^&]*', '', config)
+    config = re.sub(r'&?remarks?=[^&]*', '', config)
+    config = re.sub(r'&?comment=[^&]*', '', config)
+    
+    # حذف query stringهای غیرضروری
+    config = re.sub(r'\?.*$', '', config)
+    
+    return config
 
 async def post_to_channel(new_configs: list):
     if not new_configs:
