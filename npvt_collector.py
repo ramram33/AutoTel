@@ -1,6 +1,7 @@
 import asyncio
 import os
-from datetime import datetime, timezone
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 from telethon.tl.functions.messages import GetHistoryRequest
@@ -26,7 +27,6 @@ SOURCE_CHANNELS = [
 MY_CHANNEL = '@V2ray4Free1'
 YOUR_TAG = "@V2ray4Free1"
 
-# فایل برای ذخیره شناسه فایل‌های ارسال شده در روز جاری
 TRACK_FILE = "sent_npvt_files.txt"
 
 async def main():
@@ -36,7 +36,10 @@ async def main():
         await client.start()
         print("✅ اتصال برقرار شد. در حال جمع‌آوری فایل‌های .npvt...\n")
 
-        today = datetime.now(timezone.utc).date()
+        # استفاده از وقت تهران برای تشخیص روز جاری
+        tehran_tz = ZoneInfo("Asia/Tehran")
+        today = datetime.now(tehran_tz).date()
+
         sent_files = load_sent_files()
 
         for channel in SOURCE_CHANNELS:
@@ -64,7 +67,9 @@ async def main():
 
                     stop = False
                     for msg in messages.messages:
-                        if msg.date.date() < today:
+                        # چک روز جاری به وقت تهران
+                        msg_date = msg.date.astimezone(tehran_tz).date()
+                        if msg_date < today:
                             stop = True
                             break
 
@@ -72,7 +77,6 @@ async def main():
                             filename = msg.document.attributes[0].file_name if msg.document.attributes else None
                             
                             if filename and filename.endswith('.npvt'):
-                                # چک تکراری
                                 file_key = f"{channel}_{filename}"
                                 if file_key in sent_files:
                                     continue
@@ -81,20 +85,24 @@ async def main():
                                 file_path = await client.download_media(msg, file=filename)
                                 print(f"   دانلود شد: {filename}")
 
-                                # تغییر نام فایل (اضافه کردن تگ)
+                                # تغییر نام فایل
                                 new_filename = f"{filename.replace('.npvt', '')}_{YOUR_TAG}.npvt"
                                 new_path = os.path.join(os.getcwd(), new_filename)
                                 os.rename(file_path, new_path)
 
-                                # ارسال به کانال
-                                await client.send_file(MY_CHANNEL, new_path, caption=f"از کانال: {channel}")
+                                # ارسال فقط با آیدی کانال خودت (بدون توضیح اضافی)
+                                await client.send_file(
+                                    MY_CHANNEL, 
+                                    new_path, 
+                                    caption=YOUR_TAG
+                                )
                                 print(f"   ارسال شد: {new_filename}")
 
-                                # ثبت به عنوان ارسال شده
+                                # ثبت ارسال
                                 sent_files.add(file_key)
                                 save_sent_files(sent_files)
 
-                                # پاک کردن فایل محلی بعد از ارسال
+                                # پاک کردن فایل محلی
                                 if os.path.exists(new_path):
                                     os.remove(new_path)
 
