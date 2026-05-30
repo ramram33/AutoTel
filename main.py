@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# تنظیمات از محیط (در GitHub Actions از Secrets خوانده می‌شود)
+# تنظیمات از محیط
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")
@@ -32,6 +32,8 @@ TELEGRAM_CHANNELS = [
     '@FreakConfig',
     '@makvaslim',
 ]
+
+NPV_CHANNELS = ['@Configir98', '@mitivpn', '@oxnet_ir']   # کانال‌های جدید برای فایل npvt
 
 MY_CHANNEL = '@V2ray4Free1'
 
@@ -182,7 +184,6 @@ def save_to_files(all_configs: list) -> list:
     previous_set = set()
     is_new_day = True
 
-    # چک کردن تاریخ فایل
     if os.path.exists(txt_filename):
         try:
             with open(txt_filename, "r", encoding="utf-8") as f:
@@ -193,16 +194,14 @@ def save_to_files(all_configs: list) -> list:
                         is_new_day = False
                         previous_set = set(line.strip() for line in lines[1:] if line.strip() and not line.startswith('#'))
         except:
-            pass  # اگر خطایی بود، روز جدید فرض می‌کنیم
+            pass
 
-    # پیدا کردن کانفیگ‌های واقعاً جدید
     new_configs = [cfg for cfg in cleaned_all if cfg not in previous_set]
 
     if not new_configs:
         print("هیچ کانفیگ جدیدی پیدا نشد.")
         return []
 
-    # نوشتن در فایل
     mode = "w" if is_new_day else "a"
     try:
         with open(txt_filename, mode, encoding="utf-8") as f:
@@ -214,7 +213,6 @@ def save_to_files(all_configs: list) -> list:
     except Exception as e:
         print(f"خطا در نوشتن فایل txt: {e}")
 
-    # ساخت base64 از محتوای کامل فایل
     try:
         with open(txt_filename, "r", encoding="utf-8") as f:
             full_content = f.read().strip()
@@ -228,86 +226,94 @@ def save_to_files(all_configs: list) -> list:
 
     return new_configs
 
-async def post_to_channel(new_configs: list):
-    if not new_configs:
-        print("کانفیگی برای ارسال وجود ندارد.")
+# ====================== قابلیت جدید: استخراج فایل‌های .npvt ======================
+
+async def fetch_npvt_files(client):
+    npvt_files = []
+    today = datetime.now().date()
+
+    for channel in NPV_CHANNELS:
+        try:
+            entity = await client.get_entity(channel)
+            print(f"🔎 بررسی فایل npvt از کانال: {channel}")
+
+            last_id = 0
+            while True:
+                messages = await client(GetHistoryRequest(
+                    peer=entity,
+                    limit=50,
+                    offset_id=last_id,
+                    offset_date=None,
+                    add_offset=0,
+                    max_id=0,
+                    min_id=0,
+                    hash=0
+                ))
+
+                if not messages.messages:
+                    break
+
+                for msg in messages.messages:
+                    if msg.date.date() < today:
+                        break
+
+                    if msg.media and hasattr(msg.media, 'document'):
+                        doc = msg.media.document
+                        if doc and doc.mime_type and 'octet-stream' in doc.mime_type.lower():
+                            for attr in doc.attributes:
+                                if hasattr(attr, 'file_name') and attr.file_name and attr.file_name.endswith('.npvt'):
+                                    file_name = attr.file_name
+                                    # دانلود فایل
+                                    file_path = await client.download_media(msg, file=file_name)
+                                    npvt_files.append((file_path, file_name))
+                                    print(f"   فایل npvt پیدا شد: {file_name}")
+                                    break
+
+                if len(messages.messages) < 50 or msg.date.date() < today:
+                    break
+                last_id = messages.messages[-1].id
+
+        except Exception as e:
+            print(f"❌ خطا در بررسی npvt از {channel}: {e}")
+
+    return npvt_files
+
+async def send_npvt_files(client, npvt_files):
+    if not npvt_files:
         return
 
-    client = TelegramClient(
-        StringSession(SESSION_STRING),
-        API_ID,
-        API_HASH
-    )
-    
-    try:
-        await client.start()
+    for file_path, original_name in npvt_files:
+        try:
+            # اضافه کردن نام کانال به نام فایل
+            new_name = f"{original_name.rsplit('.', 1)[0]}#@V2ray4Free1.npvt"
+            
+            await client.send_file(
+                MY_CHANNEL,
+                file_path,
+                caption=f"📁 فایل NPV Tunnel\nنام اصلی: {original_name}",
+                attributes=[{"file_name": new_name}]
+            )
+            print(f"فایل {original_name} با موفقیت ارسال شد")
+            await asyncio.sleep(8)  # فاصله برای جلوگیری از flood
+        except Exception as e:
+            print(f"خطا در ارسال فایل {original_name}: {e}")
 
-        now_jalali = jdatetime.date.today()
-        weekdays_fa = ["شنبه", "یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه"]
-        weekday_name = weekdays_fa[now_jalali.weekday()]
-        month_names_fa = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
-                          "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
-        month_name = month_names_fa[now_jalali.month - 1]
-
-        tehran_tz = ZoneInfo("Asia/Tehran")
-        now_tehran = datetime.now(tehran_tz)
-        time_str = now_tehran.strftime("%H:%M")
-
-        first_message = (
-            f"⭕️ به‌روزرسانی کانفیگ‌ها\n"
-            f"{weekday_name} {now_jalali.day} {month_name} {now_jalali.year}\n"
-            f"ساعت: {time_str}\n"
-            f"تعداد جدید: {len(new_configs)} کانفیگ 👇"
-        )
-        await client.send_message(MY_CHANNEL, first_message)
-        print("پیام اول ارسال شد")
-        await asyncio.sleep(10)
-
-        chunk_size = 15
-        i = 0
-        block_number = 1
-
-        while i < len(new_configs):
-            chunk = new_configs[i:i + chunk_size]
-            message = "```\n" + "\n".join(chunk) + "\n```"
-
-            if len(message) <= 3800:
-                await client.send_message(MY_CHANNEL, message)
-                print(f"بخش {block_number} ارسال شد")
-                await asyncio.sleep(10)
-                i += chunk_size
-                block_number += 1
-            else:
-                print(f"بخش {block_number} طولانی → تقسیم به دو قسمت")
-                half = len(chunk) // 2
-                chunk1 = chunk[:half]
-                chunk2 = chunk[half:]
-
-                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk1) + "\n```")
-                print(f"   نیمه اول ارسال شد")
-                await asyncio.sleep(5)
-
-                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk2) + "\n```")
-                print(f"   نیمه دوم ارسال شد")
-                await asyncio.sleep(10)
-
-                i += chunk_size
-                block_number += 1
-
-        print(f"ارسال {len(new_configs)} کانفیگ جدید به پایان رسید")
-
-    except errors.FloodWaitError as e:
-        print(f"فلود: باید {e.seconds} ثانیه صبر کنی")
-    except Exception as e:
-        print(f"خطا در ارسال به کانال: {e}")
-    finally:
-        await client.disconnect()
+# ====================== Main ======================
 
 if __name__ == "__main__":
     try:
         results = asyncio.run(fetch_configs())
         new_ones = save_to_files(results)
         asyncio.run(post_to_channel(new_ones))
+
+        # قابلیت جدید: استخراج و ارسال فایل‌های npvt
+        print("\n🔄 شروع بررسی فایل‌های NPV Tunnel...")
+        client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
+        asyncio.run(client.start())
+        npvt_files = asyncio.run(fetch_npvt_files(client))
+        asyncio.run(send_npvt_files(client, npvt_files))
+        asyncio.run(client.disconnect())
+
     except KeyboardInterrupt:
         print("\nتوسط کاربر متوقف شد.")
     except Exception as e:
