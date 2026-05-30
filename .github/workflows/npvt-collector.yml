@@ -32,6 +32,7 @@ jobs:
 
       - name: Run NPVT Collector
         env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
