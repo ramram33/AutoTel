@@ -26,7 +26,7 @@ SOURCE_CHANNELS = [
 ]
 
 MY_CHANNEL = '@V2ray4Free1'
-YOUR_TAG = "V2ray4Free1"
+YOUR_TAG = "@V2ray4Free1"
 
 TRACK_FILE = "sent_npvt_files.txt"
 
