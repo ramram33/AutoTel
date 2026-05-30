@@ -34,6 +34,7 @@ TELEGRAM_CHANNELS = [
 ]
 
 MY_CHANNEL = '@V2ray4Free1'
+YOUR_TAG = "@V2ray4Free1"
 
 # الگوهای شناسایی
 CONFIG_PATTERN = re.compile(r'(?:vmess|vless|ss|shadowsocks|trojan|hysteria|hysteria2|hy2)://[^\s<>\"]+')
@@ -270,6 +271,9 @@ async def post_to_channel(new_configs: list):
         while i < len(new_configs):
             chunk = new_configs[i:i + chunk_size]
             message = "```\n" + "\n".join(chunk) + "\n```"
+            
+            # اضافه کردن آیدی کانال به انتهای پیام
+            message += f"\n\n{YOUR_TAG}"   # YOUR_TAG = @V2ray4Free1
 
             if len(message) <= 3800:
                 await client.send_message(MY_CHANNEL, message)
@@ -278,16 +282,19 @@ async def post_to_channel(new_configs: list):
                 i += chunk_size
                 block_number += 1
             else:
-                print(f"بخش {block_number} طولانی → تقسیم به دو قسمت")
+                print(f"بخش {block_number} طولانی است → تقسیم به دو قسمت")
+                
                 half = len(chunk) // 2
                 chunk1 = chunk[:half]
                 chunk2 = chunk[half:]
 
-                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk1) + "\n```")
+                msg1 = "```\n" + "\n".join(chunk1) + "\n```\n\n" + YOUR_TAG
+                await client.send_message(MY_CHANNEL, msg1)
                 print(f"   نیمه اول ارسال شد")
                 await asyncio.sleep(5)
 
-                await client.send_message(MY_CHANNEL, "```\n" + "\n".join(chunk2) + "\n```")
+                msg2 = "```\n" + "\n".join(chunk2) + "\n```\n\n" + YOUR_TAG
+                await client.send_message(MY_CHANNEL, msg2)
                 print(f"   نیمه دوم ارسال شد")
                 await asyncio.sleep(10)
 
