@@ -2,9 +2,9 @@ name: NPVT Files Collector
 
 on:
   schedule:
-    - cron: '30 7 * * *'     # ۱۱:۰۰ صبح ایران (۷:۳۰ UTC)
-    - cron: '30 12 * * *'    # ۱۶:۰۰ عصر ایران (۱۲:۳۰ UTC)
-    - cron: '30 18 * * *'    # ۲۲:۰۰ شب ایران (۱۸:۳۰ UTC)
+    - cron: '25 4 * * *'
+    - cron: '25 10 * * *'
+    - cron: '25 16 * * *'
   workflow_dispatch:
 
 jobs:
