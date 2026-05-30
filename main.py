@@ -172,6 +172,42 @@ def clean_configs(configs: list) -> list:
             cleaned.append(tagged)
     return cleaned
 
+def normalize_config(config: str) -> str:
+    """نرمال‌سازی پیشرفته برای تشخیص بهتر تکراری‌ها"""
+    if not config:
+        return config
+    
+    # حذف هر چیزی بعد از #
+    if '#' in config:
+        config = config.split('#', 1)[0].strip()
+    
+    # حذف فضای اضافی
+    config = config.strip()
+    
+    # حذف پارامترهای متغیر و غیرضروری
+    import re
+    # حذف remark, ps, add, comment, etc.
+    config = re.sub(r'&?ps=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?add=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?remarks?=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?comment=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?name=[^&]*', '', config, flags=re.IGNORECASE)
+    
+    # حذف query string کامل اگر فقط شامل پارامترهای متغیر باشد
+    config = re.sub(r'\?.*$', '', config)
+    
+    # حذف برخی پارامترهای رایج دیگر
+    config = re.sub(r'&?alterId=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?fp=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?type=[^&]*', '', config, flags=re.IGNORECASE)
+    config = re.sub(r'&?security=[^&]*', '', config, flags=re.IGNORECASE)
+    
+    # حذف چند فضای خالی متوالی
+    config = re.sub(r'\s+', '', config)
+    
+    return config
+
+
 def save_to_files(all_configs: list) -> list:
     cleaned_all = clean_configs(all_configs)
 
@@ -183,6 +219,7 @@ def save_to_files(all_configs: list) -> list:
     previous_set = set()
     is_new_day = True
 
+    # خواندن فایل قبلی (اگر وجود داشته باشد)
     if os.path.exists(txt_filename):
         try:
             with open(txt_filename, "r", encoding="utf-8") as f:
@@ -191,19 +228,21 @@ def save_to_files(all_configs: list) -> list:
                     file_date = lines[0].split("# Date: ")[1].strip()
                     if file_date == today_str:
                         is_new_day = False
-                        # تشخیص هوشمندتر تکراری
+                        # استفاده از normalize برای تشخیص بهتر
                         previous_set = set(normalize_config(line) for line in lines[1:] 
                                          if line.strip() and not line.startswith('#'))
         except Exception as e:
-            print(f"خطا در خواندن فایل: {e}")
+            print(f"خطا در خواندن فایل قبلی: {e}")
 
-    # نرمال‌سازی و پیدا کردن واقعاً جدیدها
+    # پیدا کردن کانفیگ‌های واقعاً جدید
     new_configs = []
+    seen_today = set()  # برای جلوگیری از تکراری داخل همان اجرا
+
     for cfg in cleaned_all:
-        normalized = normalize_config(cfg)
-        if normalized not in previous_set:
+        norm = normalize_config(cfg)
+        if norm not in previous_set and norm not in seen_today:
             new_configs.append(cfg)
-            previous_set.add(normalized)   # اضافه کردن به مجموعه برای اجراهای بعدی
+            seen_today.add(norm)
 
     if not new_configs:
         print("هیچ کانفیگ جدیدی پیدا نشد.")
@@ -219,7 +258,7 @@ def save_to_files(all_configs: list) -> list:
                 f.write(cfg + "\n")
         print(f"{len(new_configs)} کانفیگ جدید {'اضافه شد' if mode == 'a' else 'برای روز جدید ذخیره شد'}")
     except Exception as e:
-        print(f"خطا در نوشتن فایل: {e}")
+        print(f"خطا در نوشتن فایل txt: {e}")
 
     # بروزرسانی base64
     try:
@@ -234,29 +273,6 @@ def save_to_files(all_configs: list) -> list:
         print(f"خطا در ساخت base64: {e}")
 
     return new_configs
-
-
-def normalize_config(config: str) -> str:
-    """نرمال‌سازی کانفیگ برای تشخیص بهتر تکراری‌ها"""
-    # حذف remark و هر چیزی بعد از #
-    if '#' in config:
-        config = config.split('#', 1)[0].strip()
-    
-    # حذف فضای اضافی
-    config = config.strip()
-    
-    # حذف برخی پارامترهای متغیر مثل remark, ps, add و غیره
-    import re
-    # حذف پارامترهای رایج که باعث تفاوت می‌شوند
-    config = re.sub(r'&?ps=[^&]*', '', config)
-    config = re.sub(r'&?add=[^&]*', '', config)
-    config = re.sub(r'&?remarks?=[^&]*', '', config)
-    config = re.sub(r'&?comment=[^&]*', '', config)
-    
-    # حذف query stringهای غیرضروری
-    config = re.sub(r'\?.*$', '', config)
-    
-    return config
 
 async def post_to_channel(new_configs: list):
     if not new_configs:
