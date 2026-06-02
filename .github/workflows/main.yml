@@ -2,6 +2,7 @@ name: Collect V2Ray Configs
 
 on:
   schedule:
+    - cron: '45 0 * * *'
     - cron: '45 3 * * *'
     - cron: '45 9 * * *'
     - cron: '45 15 * * *'
