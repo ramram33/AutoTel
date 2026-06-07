@@ -23,12 +23,11 @@ if not SESSION_STRING:
     raise ValueError("TELEGRAM_SESSION_STRING در محیط تعریف نشده است. لطفاً در GitHub Secrets اضافه کنید.")
 
 TELEGRAM_CHANNELS = [
+    '@Broz_time',
     '@arisping',
     '@PrivateVPNs',
     '@Configir98',
-    '@AzadLinkIran',
     '@Vpn_m2s',
-    '@amirambitfree',
     '@FreakConfig',
     '@makvaslim',
 ]
