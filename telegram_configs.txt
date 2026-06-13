@@ -7,3 +7,4 @@ vless://7e78692a-2c4c-4be4-bfe6-95526c4197c1@188.114.97.6:443?path=%2Famin&secur
 vless://eb666ac5-ff96-4e55-9d64-a75c480ef218@81.12.92.252:8080?security=none&encryption=none&headerType=none&type=tcp#@V2ray4Free1
 vless://cc5cd467-428f-4318-9954-ad45847b194a@188.114.97.6:443?path=%2Fxiron&security=tls&encryption=none&insecure=0&host=holy-wave-e144.aaaii09-com.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=holy-wave-e144.aaaii09-com.workers.dev#@V2ray4Free1
 trojan://mitivpn@188.114.97.6:443?path=%2Fed%3Dmitivpn&security=tls&alpn=http%2F1.1&insecure=0&host=sdasdfgv.global.ssl.fastly.top.mitivpn-a.site&fp=chrome&type=ws&allowInsecure=0&sni=global.fastly.com.mitivpn-a.site#@V2ray4Free1
+trojan://telegram-id-privatevpns@3.121.164.113:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#@V2ray4Free1
