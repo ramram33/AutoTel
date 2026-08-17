@@ -20,7 +20,7 @@ if not SESSION_STRING:
     raise ValueError("TELEGRAM_SESSION_STRING در محیط تعریف نشده است.")
 
 SOURCE_CHANNELS = [
-    '@Configir98',
+    '@irMARTIN',
     '@mitivpn',
     '@oxnet_ir'
 ]
