@@ -22,7 +22,8 @@ if not SESSION_STRING:
 SOURCE_CHANNELS = [
     '@irMARTIN',
     '@mitivpn',
-    '@oxnet_ir'
+    '@oxnet_ir',
+    '@Broz_time'
 ]
 
 MY_CHANNEL = '@V2ray4Free1'
