@@ -169,7 +169,7 @@ def clean_configs(configs: list) -> list:
         clean_cfg = re.split(r'\s*#', cfg)[0].strip()
         clean_cfg = re.sub(r'\s+$', '', clean_cfg)
         if clean_cfg:
-            tagged = f"{clean_cfg}#@V2ray4Free1"
+            tagged = f"{clean_cfg}#@V2rayNPVTConfig"
             cleaned.append(tagged)
     return cleaned
 
@@ -319,7 +319,7 @@ async def post_to_channel(new_configs: list):
             message = "```\n" + "\n".join(chunk) + "\n```"
             
             # اضافه کردن آیدی کانال به انتهای پیام
-            message += f"\n\n{YOUR_TAG}"   # YOUR_TAG = @V2ray4Free1
+            message += f"\n\n{YOUR_TAG}"   # YOUR_TAG = @V2rayNPVTConfig
 
             if len(message) <= 3800:
                 await client.send_message(MY_CHANNEL, message)
