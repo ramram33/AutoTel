@@ -34,8 +34,8 @@ TELEGRAM_CHANNELS = [
     '@makvaslim',
 ]
 
-MY_CHANNEL = '@V2ray4Free1'
-YOUR_TAG = "@V2ray4Free1"
+MY_CHANNEL = '@V2rayNPVTConfig'
+YOUR_TAG = "@V2rayNPVTConfig"
 
 # الگوهای شناسایی
 CONFIG_PATTERN = re.compile(r'(?:vmess|vless|ss|shadowsocks|trojan|hysteria|hysteria2|hy2)://[^\s<>\"]+')
