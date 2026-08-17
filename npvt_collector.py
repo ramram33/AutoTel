@@ -26,8 +26,8 @@ SOURCE_CHANNELS = [
     '@Broz_time'
 ]
 
-MY_CHANNEL = '@V2ray4Free1'
-YOUR_TAG = "@V2ray4Free1"
+MY_CHANNEL = '@V2rayNPVTConfig'
+YOUR_TAG = "@V2rayNPVTConfig"
 
 TRACK_FILE = "sent_npvt_files.txt"
 
