@@ -2,10 +2,10 @@ name: Collect V2Ray Configs
 
 on:
   schedule:
-    - cron: '42 2 * * *'
+    - cron: '42 0 * * *'
+    - cron: '42 3 * * *'
     - cron: '42 6 * * *'
-    - cron: '42 11 * * *'
-    - cron: '42 17 * * *'
+    - cron: '42 15 * * *'
   workflow_dispatch:        # برای تست دستی همچنان فعال باشد
 
 jobs:
