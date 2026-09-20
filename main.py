@@ -32,6 +32,7 @@ TELEGRAM_CHANNELS = [
     '@Vpn_m2s',
     '@FreakConfig',
     '@makvaslim',
+    '@V2rayng_Fast',
 ]
 
 MY_CHANNEL = '@V2rayNPVTConfig'
