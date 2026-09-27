@@ -1,2 +1,5 @@
 # Date: 2026-09-27
 @irMARTIN_ir🌧CONFIG.npvt
+@irMARTIN_ir🕸CONFIG🕷.npvt
+@Broz_time_سرعتی (32).npvt
+@irMARTIN_𝗜𝗥 𝗖𝗢𝗡𝗙𝗜𝗚 𝗩𝗜𝗣.npvt
