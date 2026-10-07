@@ -45,3 +45,12 @@ vless://20ef7310-0b50-4943-98a6-3d0856b383b1@api.ferrin.uk:443?path=%2F&security
 vless://20ef7310-0b50-4943-98a6-3d0856b383b1@us.vmagnum.win:443?mode=auto&path=%2F&security=tls&alpn=h2&encryption=none&insecure=0&host=us.vmagnum.win&fp=firefox&type=xhttp&allowInsecure=0&sni=20ef7310.ferrin.uk#@V2rayNPVTConfig
 vless://6ead3f4c-023f-4322-b5c4-ac4e327d259d@199.232.78.159:443?security=tls&encryption=none&insecure=0&host=pannn1.global.ssl.fastly.net&type=ws&allowInsecure=0&sni=ssl.fastly.com#@V2rayNPVTConfig
 trojan://humanity@188.114.97.6:443?path=%2Fassignment&security=tls&fm=%7B%22tcp%22%3A%5B%7B%22settings%22%3A%7B%22packets%22%3A%22tlshello%22%2C%22lengths%22%3A%5B%220%22%2C%22104%22%5D%7D%2C%22type%22%3A%22fragment%22%7D%5D%7D&insecure=0&host=www.pleadcourt.org&type=ws&allowInsecure=0&sni=www.pleadcourt.org#@V2rayNPVTConfig
+trojan://humanity@141.193.213.172:443?path=%2Fassignment&security=tls&insecure=0&host=www.calmlunch.com&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=www.calmlunch.com#@V2rayNPVTConfig
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTowTTZ5UXUyVDhBbVpHZkppa2pNMTV1YTVGTzZCRW9LRA@31.56.196.126:1080#@V2rayNPVTConfig
+vless://cfdf593f-cb6b-e446-72f9-3017803c2230@faultpass-newpanel-production.up.railway.app:443?encryption=none&security=tls&sni=faultpass-newpanel-production.up.railway.app&fp=chrome&alpn=http/1.1&type=ws&path=/ws/cfdf593f-cb6b-e446-72f9-3017803c2230&host=faultpass-newpanel-production.up.railway.app#@V2rayNPVTConfig
+vless://e4514801-0d5a-42ba-869f-39bd605aef9e@51.44.28.81:22222?encryption=none&security=none&type=tcp#@V2rayNPVTConfig
+ss://bm9uZTo1OWZjNWY4Yy01Njk3LTRlYjgtYWNmMi04YWUzNjNmMjAzYTI@58.151.107.230:14000#@V2rayNPVTConfig
+vless://900606a3-cf07-4680-a589-f81f039e3a85@172.235.175.57:35351?security=none&allowInsecure=0&encryption=none&type=tcp&headerType=none#@V2rayNPVTConfig
+vless://e4514801-0d5a-42ba-869f-39bd605aef9e@52.47.148.54:22222?encryption=none&security=none&type=tcp#@V2rayNPVTConfig
+vless://c4edb87e-8544-4fa4-bd1c-b0cda9a34b46@188.114.97.6:443?path=%2Fws&security=tls&encryption=none&insecure=0&host=a.cwvps.eu.org&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=a.cwvps.eu.org#@V2rayNPVTConfig
+trojan://humanity@www.speedtest.net:443?path=%2Fassignment&security=tls&insecure=0&host=www.calmlunch.com&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=www.calmlunch.com#@V2rayNPVTConfig
