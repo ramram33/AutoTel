@@ -1,6 +1,12 @@
 # Date: 2026-10-20
-@irMARTIN_IR CONFIG 👑.npvt
-@irMARTIN_IR CONFIG VIP.npvt
 @Broz_time_فـوق سـریع (30).npvt
+@irMARTIN_IR CONFIG VIP.npvt
+@Broz_time_ســـرعـتی (10).npvt
+@irMARTIN_IR CONFIG 👑.npvt
+@Broz_time_فـوق قـــوی (9).npvt
+@Broz_time_قــ ــــوی.npvt
 @Broz_time_مــــوشک (6).npvt
+@irMARTIN_IR CONFIG ☠.npvt
 @irMARTIN_IR CONFIG 🌲.npvt
+@irMARTIN_IR CONFIG 🔥.npvt
+@Broz_time_پر سرعت (31).npvt
